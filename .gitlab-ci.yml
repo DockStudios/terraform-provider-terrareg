@@ -21,8 +21,11 @@ format:
 
 test:
   stage: test
+  parallel:
+    matrix:
+      - TERRAREG_VERSION: ["latest", "v4.4.0", "v3.13.6", "v2.81.4"]
   services:
-    - name: ghcr.io/matthewjohn/terrareg:latest
+    - name: ghcr.io/matthewjohn/terrareg:${TERRAREG_VERSION}
       alias: terrareg
       
   variables:
