@@ -19,7 +19,16 @@ format:
     - go fmt $(go list ./... | grep -v /vendor/)
     - go vet $(go list ./... | grep -v /vendor/)
 
-test:
+"Unit tests":
+  stage: test
+  script:
+    - unset http_proxy
+    - unset https_proxy
+    - unset HTTP_PROXY
+    - unset HTTPS_PROXY
+    - go test -race $(go list ./... | grep -v /vendor/)
+
+"Acceptance Tests":
   stage: test
   parallel:
     matrix:
