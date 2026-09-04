@@ -45,7 +45,6 @@ func (c *TerraregClient) CreateModule(namespace string, name string, provider st
 	}
 
 	dec := json.NewDecoder(res.Body)
-	dec.DisallowUnknownFields()
 
 	type CreateRepsonse struct {
 		ID string `json:"id"`
@@ -84,7 +83,6 @@ func (c *TerraregClient) GetModule(namespace string, name string, provider strin
 	}
 
 	dec := json.NewDecoder(res.Body)
-	// dec.DisallowUnknownFields()
 
 	var data ModuleModel
 	err = dec.Decode(&data)

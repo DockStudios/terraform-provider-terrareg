@@ -7,6 +7,17 @@ variables:
   https_proxy: http://172.17.0.1:3128
   HTTP_PROXY: http://172.17.0.1:3128
   HTTPS_PROXY: http://172.17.0.1:3128
+  GOPATH: "$CI_PROJECT_DIR/.go"
+  GOMODCACHE: "$CI_PROJECT_DIR/.go/pkg/mod"
+  GOCACHE: "$CI_PROJECT_DIR/.go/cache"
+
+cache:
+  key:
+    files:
+      - go.sum
+  paths:
+    - .go/pkg/mod/
+    - .go/cache/
 
 stages:
   - test
@@ -19,10 +30,22 @@ format:
     - go fmt $(go list ./... | grep -v /vendor/)
     - go vet $(go list ./... | grep -v /vendor/)
 
-test:
+"Unit tests":
   stage: test
+  script:
+    - unset http_proxy
+    - unset https_proxy
+    - unset HTTP_PROXY
+    - unset HTTPS_PROXY
+    - go test -race $(go list ./... | grep -v /vendor/)
+
+"Acceptance Tests":
+  stage: test
+  parallel:
+    matrix:
+      - TERRAREG_VERSION: ["latest", "v4.4.0", "v3.13.5"]
   services:
-    - name: ghcr.io/matthewjohn/terrareg:latest
+    - name: ghcr.io/matthewjohn/terrareg:${TERRAREG_VERSION}
       alias: terrareg
       
   variables:

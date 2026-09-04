@@ -57,7 +57,6 @@ func (c *TerraregClient) GetNamespace(name string) (*NamespaceModel, error) {
 	}
 
 	dec := json.NewDecoder(res.Body)
-	dec.DisallowUnknownFields()
 
 	var namespace NamespaceModel
 	err = dec.Decode(&namespace)
