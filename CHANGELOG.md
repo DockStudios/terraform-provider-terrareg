@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://gitlab.dockstudios.co.uk/pub/terra/terraform-provider-terrareg/compare/v1.1.2...v1.1.3) (2026-09-04)
+
+
+### Bug Fixes
+
+* Remove disallow of unknown fields to attempt to function with newer versions ([c2b3e5c](https://gitlab.dockstudios.co.uk/pub/terra/terraform-provider-terrareg/commit/c2b3e5cdf81b8c4c70632708078560a438aa73b3)), closes [#10](https://gitlab.dockstudios.co.uk/pub/terra/terraform-provider-terrareg/issues/10)
+
 ## [1.1.2](https://gitlab.dockstudios.co.uk/pub/terra/terraform-provider-terrareg/compare/v1.1.1...v1.1.2) (2024-02-03)
 
 
