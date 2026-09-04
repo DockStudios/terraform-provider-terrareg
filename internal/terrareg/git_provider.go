@@ -32,7 +32,6 @@ func (c *TerraregClient) GetGitProviders() ([]GitProviderModel, error) {
 	}
 
 	dec := json.NewDecoder(res.Body)
-	// dec.DisallowUnknownFields()
 
 	var data []GitProviderModel
 	err = dec.Decode(&data)
