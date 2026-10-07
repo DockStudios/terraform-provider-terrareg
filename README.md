@@ -41,3 +41,4 @@ TF_ACC=1 TERRAREG_URL=http://localhost:5000 TERRAREG_API_KEY=password go test $(
 # License
 
 This project and all associated code is covered by GNU General Public License v3.0.
+
